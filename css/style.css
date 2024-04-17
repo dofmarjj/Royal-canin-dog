@@ -1,0 +1,1615 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul,
+nav,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+html body {
+  font-family: DINPro;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #666666;
+}
+
+/* ---------------------------------------- */
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#scrollTopBtn {
+  max-width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+  z-index: 10;
+
+  padding: 6px 32px;
+  border-radius: 40px;
+  border: none;
+  background-color: #e2001a;
+
+  color: white;
+  font-family: DINPro;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  /* text-transform: uppercase; */
+  text-align: left;
+  transition: 0.3s linear;
+}
+
+.btn {
+  width: 100%;
+  position: relative;
+}
+
+.fix {
+  position: absolute !important;
+}
+
+#scrollTopBtn::after {
+  content: url("../img/arrow up.svg");
+
+  /* background-image: url("../img/arrow up.svg"); */
+}
+
+#scrollTopBtn:hover {
+  color: #fff;
+  transition: 0.1s linear;
+}
+
+/* ---------------------------------------- */
+
+/* ------Burger---------------------------------- */
+
+.nav-burger {
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 0;
+  transition: top 2.5s;
+}
+
+.menu {
+  width: 80%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.menu li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.menu li a {
+  text-decoration: none;
+}
+
+.burger-menu {
+  display: none;
+}
+
+.burger {
+  width: 30px;
+  height: 4px;
+  background-color: #a2a1a1;
+  margin: 6px 0;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.burger:nth-child(1) {
+  width: 23px;
+}
+.burger:nth-child(2) {
+  width: 30px;
+}
+.burger:nth-child(3) {
+  width: 25px;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  top: 0;
+  left: 0;
+  z-index: 0;
+  display: none;
+}
+
+.overlay.active {
+  display: block;
+}
+
+.block {
+  padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .nav-burger {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: auto;
+  }
+
+  .menu {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    transition: opacity 6.3s;
+    opacity: 0;
+    overflow: auto;
+    justify-content: start;
+  }
+  .menu.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    opacity: 1;
+  }
+
+  .menu li {
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #f6f6f6;
+    border-top: 1px solid #f6f6f6;
+    padding: 20px 32px;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+  .burger-menu.active .burger:nth-child(1) {
+    transform: rotate(-45deg) translate(-9px, 3px);
+    width: 25px;
+  }
+  .burger-menu.active .burger:nth-child(2) {
+    opacity: 0;
+  }
+  .burger-menu.active .burger:nth-child(3) {
+    transform: rotate(45deg) translate(-11px, -6px);
+    width: 25px;
+  }
+  html.no-scroll {
+    overflow: hidden;
+  }
+}
+
+/* ------/Burger---------------------------------- */
+
+/* Cards */
+
+.img-block {
+  position: absolute;
+  /* max-width: 400px; */
+  margin: 0 auto;
+  overflow: hidden;
+
+  max-width: 6%;
+  min-width: 90px;
+  min-height: 80px;
+  transition: 0.3s linear;
+}
+
+.img-block img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  /* height: auto; */
+}
+
+.img-block::before {
+  content: "";
+  position: absolute;
+  left: 12%;
+  top: 20%;
+  width: 75%;
+  height: 60%;
+  background-color: transparent;
+  border-radius: 50%; /* Создание круга */
+  transition: background-color 0.3s ease; /* Анимация смены цвета фона */
+  z-index: 0; /* Задний план, чтобы не перекрывать изображение */
+}
+
+/* Изменение цвета круга при наведении */
+.img-block:hover::before {
+  background-color: #89d3f1;
+}
+
+.cards-block {
+  position: relative;
+}
+
+.cards-block a img:hover {
+}
+
+.card-1 {
+  left: 150px;
+  top: 40px;
+}
+
+.card-2 {
+  left: 510px;
+  top: 35px;
+
+  max-width: 14%;
+  min-width: 143px;
+}
+
+.card-3 {
+  left: 445px;
+  bottom: 85px;
+}
+
+.card-4 {
+  left: 565px;
+  bottom: 85px;
+}
+
+.card-5 {
+  left: 665px;
+  bottom: 85px;
+
+  min-width: 143px;
+  max-width: 13%;
+}
+
+.card-6 {
+  left: 805px;
+  bottom: 85px;
+
+  min-width: 190px;
+  max-width: 17%;
+}
+/* Cards */
+
+._container {
+  max-width: 1092px;
+  padding: 0px 15px;
+  margin: 0px auto;
+  box-sizing: content-box;
+}
+
+._line {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #f6f6f6;
+}
+
+._img {
+  width: 100%;
+  margin-top: 32px;
+}
+
+._purple {
+  color: #efb4cb;
+}
+
+p span {
+  color: #e2001a;
+  font-family: DINPro;
+  font-weight: 500;
+  font-size: 16px;
+  /* line-height: 150%; */
+}
+
+._gray {
+  color: #666666;
+  font-weight: 600;
+}
+
+._red {
+  color: #e2001a;
+  font-weight: 500;
+}
+
+.fix {
+  overflow: hidden;
+}
+/* ---Header------------------------------------- */
+
+.header {
+  background-color: white;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.header__container {
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0px;
+  position: relative;
+  z-index: 2;
+  background-color: white;
+}
+.header__logo {
+  width: min-content;
+  position: relative;
+  z-index: 5;
+  margin-bottom: 32px;
+}
+.header__img {
+}
+.header__menu {
+  /* margin: 32px 0px 0px 0px; */
+}
+.menu {
+}
+.menu__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.menu__list li {
+  margin: 0px 0px 0px 50px;
+}
+
+.menu__item {
+}
+.menu__link {
+  color: #666666;
+  font-family: DINPro-Medium;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.menu__link:hover,
+.menu__link:focus {
+  color: #e2001a;
+}
+
+.menu__link.active__btn {
+  color: #e2001a;
+  border-bottom: 1px solid #e2001a;
+}
+
+/* ---Main------------------------------------- */
+.main {
+  flex: 1 1 auto;
+}
+
+/* ---About------------------------------------- */
+
+.about {
+}
+
+.page {
+  padding: 140px 0px 0px 0px;
+}
+
+.page__main-block {
+  width: 100%;
+  background-color: #f6f6f6;
+  padding: 48px 0px;
+}
+.page__main-title {
+  color: #e2001a;
+  font-family: DINPro;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 112.5%;
+  text-align: center;
+}
+
+/* ---Main block------------------------------------- */
+
+.page-history,
+.page-cycle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 80px;
+  /* margin-bottom: 80px; */
+}
+
+.cycle {
+  gap: 100px;
+}
+
+.page-about {
+  margin-bottom: 80px;
+}
+
+.page-history__block {
+  margin-top: 50px;
+}
+
+.page-history__title,
+.page-cycle__title,
+.diet-block__title,
+.starter-block_title {
+  color: #e2001a;
+  font-family: DINPro;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 125%;
+  margin-bottom: 32px;
+}
+
+.page-history__subtitle,
+.page-cycle__subtitle,
+.diet-block__subtitle {
+  color: #666666;
+  font-family: DINPro;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.dog-facilities {
+  position: relative;
+  margin: 0px 0px 80px 0px;
+}
+
+.dog-facilities-img {
+  position: absolute;
+  width: 50%;
+
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  margin: auto;
+  z-index: 0;
+}
+
+.facilities-list-block {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.facilities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.facilities-item {
+  max-width: 255px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.page-pregnancy {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+
+  margin: 80px auto;
+}
+
+.pregnancy-text {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.pregnancy-item {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.starter-block {
+  max-width: 540px;
+  margin: 80px auto 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.starter-block_text {
+  color: #666666;
+  font-family: DINPro;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  margin-bottom: 30px;
+}
+
+.starter-block_subtitle {
+  color: #e2001a;
+  font-family: DINPro;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.page__mother {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.page__mother {
+  margin: 80px 0;
+}
+
+.mother-block__title {
+  margin-bottom: 35px;
+}
+
+.mother-block__list {
+  margin-left: 20px;
+}
+
+.mother-block__item {
+  list-style: disc;
+  color: #666666;
+}
+
+.page__factors {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+  margin-bottom: 50px;
+}
+
+.factors-title {
+  margin-bottom: 35px;
+}
+
+.factors-list {
+  margin-left: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.factors-item {
+  list-style: disc;
+}
+
+.page-history__subtitle:last-child,
+.page-cycle__subtitle:last-child,
+.diet-block__subtitle:last-child {
+  margin-top: 32px;
+}
+
+.page-history__img,
+.page-cycle__img {
+  width: 50%;
+}
+
+.page-mob__img {
+  display: none;
+}
+
+.program {
+  margin-bottom: 80px;
+}
+
+.program-title {
+  max-width: 60%;
+  margin: auto;
+
+  color: #e2001a;
+  font-family: DINPro;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 125%;
+
+  text-align: center;
+  margin-bottom: 40px;
+  padding-top: 80px;
+}
+
+.page__diet {
+  margin-bottom: 80px;
+}
+
+.diet-block {
+  display: flex;
+  align-items: center;
+  padding: 55px 80px;
+  margin-bottom: 80px;
+}
+
+.diet-block__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.diet-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  margin-bottom: 95px;
+}
+
+.diet-list__item {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.diet-list__item img {
+  /* width: 20%; */
+}
+
+.diet-list__text {
+  padding: 0 30px;
+}
+
+.diet-list__title {
+  color: #e2001a;
+  font-family: DINPro;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.diet-list__subtitle {
+  color: #666666;
+  font-family: DINPro;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.factors-block {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.diet-factors {
+  position: relative;
+  width: 50%;
+  padding: 55px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  text-align: center;
+}
+
+.diet-factors img {
+  width: fit-content;
+}
+
+.diet-factors::before,
+.diet-factors::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 115px;
+  border: 2px dashed #96d0f1; /* Пунктирная линия */
+}
+
+.diet-factors::before {
+  top: -2px;
+  left: -2px;
+  border-bottom: none;
+  border-right: none;
+  border-radius: 60px 0 0 0; /* Форма линии (угол) */
+}
+
+.diet-factors::after {
+  bottom: -2px;
+  right: -2px;
+  border-top: none;
+  border-left: none;
+  border-radius: 0 0 60px 0; /* Форма линии (угол) */
+}
+
+.diet-factors__title {
+  color: #e2001a;
+  font-family: DINPro;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.diet-factors__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  text-align: start;
+}
+
+.diet-factors__item {
+  list-style: disc;
+  margin-left: 30px;
+
+  color: #666666;
+  font-family: DINPro;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.diet-factors__subtitle {
+  color: #666666;
+  font-family: DINPro;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.factors-block__info {
+  text-align: justify;
+  margin-bottom: 30px;
+}
+
+.factors-block__list {
+  margin-top: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.factors-block__item {
+  list-style: disc;
+  color: #666666;
+}
+
+.diet-about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.diet-about__title,
+.diet-about__title,
+.size__block-title {
+  color: #e2001a;
+  font-family: DINPro;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.diet-about__subtitle,
+.size__block-subtitle {
+  color: #666666;
+  font-family: DINPro;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.size__block-subtitle {
+  margin-bottom: 20px;
+}
+
+.diet-about__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  row-gap: 32px;
+
+  max-width: 540px;
+}
+
+.diet-milk div .diet-factors {
+  text-align: center;
+}
+
+.milk-about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 32px;
+}
+
+.diet-about__title {
+  max-width: 40%;
+  text-align: center;
+
+  margin-bottom: 32px;
+}
+
+.milk-about-mob__img {
+  display: none;
+}
+
+.diet-note {
+  text-align: center;
+  color: #666666;
+  font-family: DINPro-It;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 200%;
+}
+
+.diet-block__img {
+  min-width: 442px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diet-block__img.ration::before {
+  content: url("../img/products/mark-42.svg");
+  position: absolute;
+  top: 0;
+  left: 90px;
+}
+
+/* .diet-block__img.complex::before {
+  content: url("../img/products/mark-complex.svg");
+} */
+
+/* .diet-block__img.motherbabycat::before {
+  content: url("../img/products/mark-babycat.svg");
+} */
+
+.diet-block__img.babycatmilk::before {
+  content: url(../img/products/mark-naukovo.svg);
+  position: absolute;
+  top: 0;
+  left: 50px;
+}
+.diet-block__img.kitten::before {
+  content: url(../img/products/mark-starter.svg);
+  position: absolute;
+  top: 0;
+  left: 0px;
+}
+
+.diet-card__text {
+  font-family: DINPro;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 128.5%;
+  color: #666666;
+
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+
+  max-width: 186px;
+}
+
+.complex .diet-card__text {
+  max-width: 195px;
+}
+
+.babycatmilk .diet-card__text {
+  max-width: 200px;
+}
+
+.motherbabycat .diet-card__text {
+  max-width: 135px;
+}
+
+.kitten .diet-card__text {
+  max-width: 100px;
+}
+
+.diet-card__text::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  border: 2px solid #96d0f1; /* Пунктирная линия */
+}
+
+.diet-card__text::before {
+  top: -10px;
+  left: -10px;
+  border-top: none;
+  border-right: none;
+  border-radius: 0px 0 0 0; /* Форма линии (угол) */
+}
+
+.diet-card__img-mob {
+  display: none;
+}
+
+.size__block {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.size__block-text {
+  margin: auto 0;
+}
+
+.size__block-title {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.adaptive__block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 80px 0;
+}
+
+.adaptive__block-title {
+  margin-bottom: 30px;
+}
+
+.adaptive__block-subtitle {
+  margin-bottom: 25px;
+}
+
+.adaptive__block-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.adaptive__block-item {
+  margin-left: 30px;
+  list-style-type: disc;
+}
+
+/* ---Footer------------------------------------- */
+
+.footer {
+  background-color: #333;
+}
+
+.mars-footer-list-right {
+  padding: 20px 0 !important;
+}
+
+.mars-footer-list-right li a {
+  color: #fff !important;
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+.mars-footer-label {
+  font-size: 16px !important;
+}
+
+.mars-footer-legal p {
+  color: #d3d3d3;
+}
+
+.diet-mobile__block,
+.header__burger,
+.scroll-btn,
+input[type="range"] {
+  display: none;
+}
+
+.mars-footer-label {
+  font-size: 100px;
+}
+
+@media (max-width: 992px) {
+  #scrollTopBtn {
+    font-size: 12px;
+  }
+
+  .header__logo {
+    margin-bottom: 0;
+  }
+
+  .page__main-title {
+    font-size: 54px;
+  }
+
+  .page-mob__img {
+    display: block;
+  }
+
+  .page__img {
+    display: none;
+  }
+
+  .material-placeholder {
+    position: relative;
+  }
+
+  .material-placeholder::before {
+    content: url("../img/size.svg");
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    z-index: 10;
+  }
+
+  .cards-block {
+    overflow-x: auto;
+    overflow-y: hidden;
+    z-index: 1;
+  }
+
+  .scroll-btn {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+
+  .scroll-btn button {
+    background: transparent;
+    border: none;
+    font-size: 35px;
+    color: #d7d7d7;
+
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .scroll-btn button:hover,
+  .scroll-btn button:focus {
+    color: red;
+  }
+
+  input[type="range"] {
+    display: flex;
+
+    /* margin: auto; */
+    width: 90%;
+
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #4caf50 0%, #4caf50 0%, #d3d3d3 0%);
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    margin-top: 10px;
+  }
+
+  input[type="range"]:hover {
+    opacity: 1;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e2001a;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e2001a;
+    cursor: pointer;
+  }
+
+  span .value {
+    display: none;
+  }
+
+  .diet-list {
+    margin-bottom: 140px;
+  }
+
+  .diet-bottom__img,
+  .diet-complex__img,
+  .diet-milk__img,
+  .diet-need__img,
+  .diet-solution__img {
+    display: none;
+  }
+
+  .diet-mobile__block {
+    display: block;
+    width: 100%;
+    position: relative;
+
+    padding: 10px 10px;
+
+    background-color: #89d3f1;
+  }
+
+  .diet-solution .diet-mobile__block {
+    background-color: #96d0f1;
+  }
+
+  .diet-solution .diet-mobile__title {
+    color: white;
+    padding: 17px 0;
+  }
+
+  .diet-mobile__title strong {
+    font-weight: 700;
+  }
+
+  .diet-mobile__img {
+    max-width: 65px;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+    bottom: 30%;
+  }
+
+  .diet-mobile__title {
+    color: #005ca9;
+
+    font-family: DINPro;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-transform: uppercase;
+  }
+
+  .diet-mobile__subtitle {
+    color: #fff;
+
+    font-family: DINPro;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  .diet-mobile__text {
+    width: 90%;
+    margin: auto;
+    padding: 10px 110px 10px;
+    display: flex;
+    flex-direction: column;
+
+    /* align-items: center; */
+  }
+
+  .lbl-points {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .starter {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .diet-block {
+    flex-direction: column;
+    row-gap: 35px;
+    padding: 55px 0;
+  }
+
+  .diet-card__img {
+    display: none;
+    width: 50%;
+    max-width: 445px;
+  }
+
+  .diet-block__img {
+    max-width: min-content;
+  }
+
+  .diet-card__img-mob {
+    display: block;
+  }
+
+  .diet-card__text {
+    position: static;
+    text-align: center;
+  }
+
+  .diet-block__text {
+    text-align: center;
+  }
+
+  .diet-card__text::before {
+    display: none;
+  }
+
+  .diet-about {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+  }
+
+  .diet-about__title {
+    max-width: 100%;
+  }
+
+  .program-title {
+    padding-top: 32px;
+  }
+
+  .page-pregnancy {
+    flex-direction: column;
+  }
+
+  .pregnancy-img img {
+    width: 100%;
+  }
+
+  .page__mother {
+    flex-direction: column-reverse;
+    gap: 50px;
+  }
+
+  .mother-block__text {
+    margin: 40px 0;
+  }
+
+  .mother-block__title {
+    text-align: center;
+  }
+
+  .page__factors {
+    flex-direction: column;
+  }
+
+  .adaptive__block {
+    flex-direction: column;
+  }
+
+  .size__block {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 80px 0px 0px 0px;
+  }
+
+  .header__menu {
+    display: none;
+  }
+
+  .header__burger {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 35%;
+    width: 30px;
+    height: 20px;
+  }
+
+  .header__burger span {
+    position: absolute;
+    background-color: #808285;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    top: 9px;
+  }
+
+  .header__burger::before,
+  .header__burger::after {
+    content: "";
+    background-color: #808285;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+  }
+
+  .header__burger::before {
+    top: 0px;
+  }
+
+  .header__burger::after {
+    bottom: 0px;
+  }
+
+  .header__container {
+    padding: 15px 0;
+  }
+
+  .page-history,
+  .page-cycle {
+    padding-top: 32px;
+  }
+  .page-history {
+    flex-direction: column-reverse;
+  }
+  .page-cycle {
+    flex-direction: column;
+    padding-bottom: 32px;
+  }
+
+  .page-history__block,
+  .page-cycle__block {
+    text-align: center;
+  }
+
+  .page-history__title,
+  .page-cycle__title,
+  .diet-block__title,
+  .program-title {
+    max-width: 100%;
+    font-size: 24px;
+    line-height: 133.3%;
+  }
+
+  .page-history__img,
+  .page-cycle__img {
+    width: 100%;
+  }
+
+  .dog-facilities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dog-facilities-img {
+    position: relative;
+  }
+
+  .facilities-list-block {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .facilities-list {
+    align-items: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .page__main-block {
+    display: flex;
+    justify-content: center;
+    padding: 32px 0;
+  }
+
+  .page__main-title {
+    max-width: 250px;
+    font-size: 32px;
+  }
+
+  .diet-list {
+    flex-direction: column;
+  }
+
+  .diet-list__item {
+    width: 100%;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .diet-list__text {
+    text-align: center;
+  }
+
+  .diet-factors {
+    width: 100%;
+    padding: 0;
+  }
+
+  .factors-block::after,
+  .diet-factors::after,
+  .factors-block::before,
+  .diet-factors::before {
+    content: "";
+
+    position: absolute;
+    width: 110%;
+    border-bottom: 2px dashed #96d0f1;
+  }
+
+  .factors-block::before,
+  .diet-factors::before {
+    top: -40px;
+  }
+
+  .factors-block::after,
+  .diet-factors::after {
+    bottom: -40px;
+  }
+
+  .diet-factors::before,
+  .diet-factors::after {
+    display: none;
+  }
+
+  .diet-factors__title,
+  .diet-factors__subtitle {
+    text-align: center;
+  }
+
+  .milk-about-desc__img {
+    display: none;
+  }
+
+  .milk-about-mob__img {
+    display: block;
+  }
+}
+
+/* Full */
