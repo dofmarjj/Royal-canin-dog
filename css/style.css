@@ -1290,18 +1290,23 @@ input[type="range"] {
     width: 100%;
     position: relative;
 
-    padding: 10px 10px;
+    padding: 30px 10px;
 
     background-color: #89d3f1;
   }
 
-  .diet-solution .diet-mobile__block {
-    background-color: #96d0f1;
+  .diet-puppy .diet-mobile__block {
+    background-color: #007abd;
+    color: white;
+  }
+
+  .diet-puppy .diet-mobile__title {
+    color: white;
   }
 
   .diet-solution .diet-mobile__title {
-    color: white;
-    padding: 17px 0;
+    /* color: white; */
+    /* padding: 17px 0; */
   }
 
   .diet-mobile__title strong {
@@ -1427,7 +1432,7 @@ input[type="range"] {
   }
 
   .page__factors {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .adaptive__block {
@@ -1436,6 +1441,25 @@ input[type="range"] {
 
   .size__block {
     flex-direction: column;
+    text-align: center;
+  }
+
+  .adaptive__block-text {
+    text-align: center;
+  }
+
+  .adaptive__block-list {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+
+  .adaptive__block-img-text {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .factors-block__text {
+    padding: 0 15px;
   }
 }
 
@@ -1516,7 +1540,7 @@ input[type="range"] {
 
   .page-history__img,
   .page-cycle__img {
-    width: 100%;
+    width: 80%;
   }
 
   .dog-facilities {
@@ -1536,6 +1560,10 @@ input[type="range"] {
 
   .facilities-list {
     align-items: center;
+  }
+
+  .pregnancy-text {
+    text-align: center;
   }
 }
 
