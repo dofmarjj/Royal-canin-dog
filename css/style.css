@@ -450,7 +450,7 @@ p span {
 
 ._red {
   color: #e2001a;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .fix {
@@ -1016,9 +1016,12 @@ p span {
   left: 90px;
 }
 
-/* .diet-block__img.complex::before {
+.diet-block__img.complex::before {
   content: url("../img/products/mark-complex.svg");
-} */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
 /* .diet-block__img.motherbabycat::before {
   content: url("../img/products/mark-babycat.svg");
@@ -1637,6 +1640,12 @@ input[type="range"] {
 
   .milk-about-mob__img {
     display: block;
+  }
+
+  .diet-block__img.complex::before {
+    content: url("../img/products/mark-complex-mob.svg");
+    left: 45px;
+    top: 5px;
   }
 }
 
