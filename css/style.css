@@ -688,6 +688,10 @@ p span {
   line-height: 150%;
 }
 
+.program {
+  margin-top: 30px;
+}
+
 .page__mother {
   display: flex;
   flex-direction: row;
