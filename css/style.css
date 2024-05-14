@@ -785,6 +785,7 @@ p span {
 
 .diet-block {
   display: flex;
+  column-gap: 20px;
   align-items: center;
   padding: 55px 80px;
   margin-bottom: 80px;
@@ -1033,6 +1034,14 @@ p span {
   left: 0;
 }
 
+.diet-block__img.complex::after,
+.diet-block__img.startera::after {
+  content: url("../img/products/plashka-starter.svg");
+  position: absolute;
+  top: 42px;
+  right: 5px;
+}
+
 /* .diet-block__img.motherbabycat::before {
   content: url("../img/products/mark-babycat.svg");
 } */
@@ -1062,6 +1071,10 @@ p span {
   left: 0;
 
   max-width: 186px;
+}
+
+.img-plashka {
+  margin-bottom: 20px;
 }
 
 .complex .diet-card__text {
@@ -1473,6 +1486,11 @@ input[type="range"] {
 
   .factors-block__text {
     padding: 0 15px;
+  }
+
+  .diet-block__img.complex::after,
+  .diet-block__img.startera::after {
+    display: none;
   }
 }
 
